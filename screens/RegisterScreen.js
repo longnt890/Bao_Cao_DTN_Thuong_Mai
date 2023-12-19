@@ -18,14 +18,15 @@ const RegisterScreen = () => {
             password: password,
         };
 
-        //send a post request to the backend API
-        axios.post("http://localhost:8000/register", user)
+        // send a post request to the backend API
+        axios.post("http://192.168.1.74:8000/register", user)
         .then((message) => {
             console.log(message);
             Alert.alert("Registration Succefully", "You have registered succefully");
             setName("");
             setEmail("");
             setPassword("");
+            navigation.navigate('Login');
         })
             .catch((error) => {
                 Alert.alert(
@@ -35,6 +36,16 @@ const RegisterScreen = () => {
                 console.log("registration failed", error)
                 console.log(name, email, password)
             });
+        // axios.get('https://192.120.16.108:8000/User', {
+        //     lastName: 'Trần',
+        //     firstName: 'Quốc Tuấn',
+        //   })
+        //   .then(function (response) {
+        //     console.log( response);
+        //   })
+        //   .catch(function (error) {
+        //     console.log("Tai"+error);
+        //   });
     };
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "white", alignItems: 'center' }}>
